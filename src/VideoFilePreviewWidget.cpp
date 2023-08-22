@@ -6,10 +6,11 @@
 
 VideoFilePreviewWidget::VideoFilePreviewWidget(QWidget *parent)
         : QWidget(parent),
-        grid(new QGridLayout()),
+          grid(new QGridLayout()),
           filenameTitle(new QLabel()),
           player(new QMediaPlayer()),
-          videoWidget(new QVideoWidget()) {
+          videoWidget(new QVideoWidget())
+          {
     initWidgets();
     initLayout();
     initConnections();

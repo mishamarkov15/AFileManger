@@ -24,6 +24,7 @@ void MainWindow::initLayout() {
 }
 
 void MainWindow::initConnections() {
+    connect(left->treeView, &MyTree::selectionChanged, this, &MainWindow::changeRightWidget);
 //    connect(left->btn1, &QPushButton::clicked, right, &PreviewWidget::displayText);
 //    connect(left->btn2, &QPushButton::clicked, right, &PreviewWidget::displayText);
 //    connect(left->btn3, &QPushButton::clicked, right, &PreviewWidget::displayText);
@@ -32,4 +33,11 @@ void MainWindow::initConnections() {
 void MainWindow::initWidgets() {
     splitter->addWidget(left);
     splitter->addWidget(right);
+}
+
+void MainWindow::changeRightWidget() {
+    if (right != nullptr) {
+        delete right;
+    }
+    right = new FilePreviewWidget();
 }

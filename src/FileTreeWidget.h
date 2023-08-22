@@ -14,10 +14,25 @@
 
 const QString FOLDER_PATH = "/Users/mikhaiil/.FileManagerData";
 
+class MyTree : public QTreeView {
+    Q_OBJECT;
+public:
+    void setModel(QAbstractItemModel *model) override {
+        QTreeView::setModel(model);
+    }
+public slots:
+    void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) override {
+        QTreeView::selectionChanged(selected, deselected);
+    }
+};
+
 class FileTreeWidget : public QWidget {
 Q_OBJECT;
 public:
     explicit FileTreeWidget(QWidget *parent = nullptr);
+
+    QFileSystemModel *model;
+    MyTree *treeView;
 
 private:
 
@@ -28,8 +43,7 @@ private:
 
     QGridLayout *grid;
 
-    QFileSystemModel *model;
-    QTreeView *view;
+
 };
 
 

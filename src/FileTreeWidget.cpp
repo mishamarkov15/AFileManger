@@ -9,7 +9,7 @@ FileTreeWidget::FileTreeWidget(QWidget *parent) :
         QWidget(parent),
         grid(new QGridLayout()),
         model(new QFileSystemModel()),
-        view(new QTreeView()) {
+        treeView(new MyTree()) {
     initWidgets();
     initConnections();
     initLayout();
@@ -18,15 +18,14 @@ FileTreeWidget::FileTreeWidget(QWidget *parent) :
 void FileTreeWidget::initLayout() {
     setLayout(grid);
 
-    grid->addWidget(view);
+    grid->addWidget(treeView);
 }
 
 void FileTreeWidget::initConnections() {
-
 }
 
 void FileTreeWidget::initWidgets() {
     model->setRootPath("");
-    view->setModel(model);
-    view->setRootIndex(model->index(FOLDER_PATH));
+    treeView->setModel(model);
+    treeView->setRootIndex(model->index(FOLDER_PATH));
 }

@@ -25,9 +25,12 @@ private:
 
     FileTreeWidget* left;
 //    PreviewWidget* right;
-    VideoFilePreviewWidget* right;
+//    VideoFilePreviewWidget* right;
+    QWidget *right;
 
     QSplitter* splitter;
+private slots:
+    void changeRightWidget();
 };
 
 

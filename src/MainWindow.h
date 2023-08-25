@@ -13,22 +13,24 @@
 class MainWindow : public QMainWindow {
 Q_OBJECT;
 public:
-    explicit MainWindow(QWidget* parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
 
 private:
     void initLayout();
+
     void initConnections();
+
     void initWidgets();
 
-    QGridLayout* layout;
-    QWidget* centralWidget;
+    QGridLayout *layout;
+    QWidget *centralWidget;
 
-    FileTreeWidget* left;
+    FileTreeWidget *left;
 //    PreviewWidget* right;
-//    VideoFilePreviewWidget* right;
+//    VideoFilePreviewWidget *right;
     QWidget *right;
 
-    QSplitter* splitter;
+    QSplitter *splitter;
 private slots:
     void changeRightWidget();
 };

@@ -10,12 +10,17 @@ set(CMAKE_AUTOUIC ON)
 find_package(Qt6 COMPONENTS
         Core
         Gui
+        Widgets
+        Multimedia
+        MultimediaWidgets
         REQUIRED)
 
-add_executable(FileManger main.cpp src/mainwindow.cpp src/MainWindow.h src/TextFilePreviewWidget.cpp src/TextFilePreviewWidget.h src/FileTreeWidget.cpp src/FileTreeWidget.h src/ImageFilePreviewWidget.cpp src/ImageFilePreviewWidget.h src/FilePreviewWidget.cpp src/FilePreviewWidget.h src/VideoFilePreviewWidget.cpp src/VideoFilePreviewWidget.h)
+add_executable(FileManger main.cpp src/mainwindow.cpp src/MainWindow.h src/TextFilePreviewWidget.cpp src/TextFilePreviewWidget.h src/FileTreeWidget.cpp src/FileTreeWidget.h src/ImageFilePreviewWidget.cpp src/ImageFilePreviewWidget.h src/FilePreviewWidget.cpp src/FilePreviewWidget.h src/PasswordWindow.cpp src/PasswordWindow.h src/VideoFilePreviewWidget.cpp)
 target_link_libraries(FileManger
         Qt::Core
         Qt::Gui
         Qt::Widgets
+        Qt::Multimedia
+        Qt::MultimediaWidgets
         )
 

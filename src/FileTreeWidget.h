@@ -20,16 +20,19 @@ public:
     void setModel(QAbstractItemModel *model) override {
         QTreeView::setModel(model);
     }
-public slots:
-    void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) override {
-        QTreeView::selectionChanged(selected, deselected);
-    }
+
+signals:
+    void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) override;
 };
 
 class FileTreeWidget : public QWidget {
 Q_OBJECT;
 public:
     explicit FileTreeWidget(QWidget *parent = nullptr);
+
+    QString filePath() {
+        return model->filePath(treeView->currentIndex());
+    }
 
     QFileSystemModel *model;
     MyTree *treeView;

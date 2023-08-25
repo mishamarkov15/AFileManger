@@ -7,21 +7,26 @@
 
 #include <QWidget>
 #include <QGridLayout>
+#include <QTextEdit>
 
 class FilePreviewWidget : public QWidget {
 Q_OBJECT;
 public:
     explicit FilePreviewWidget(QWidget *parent = nullptr);
 
+    void setTextContent(const QString& text);
+
 protected:
 
-    virtual void initLayout();
+    void initLayout();
 
-    virtual void initConnections();
+    void initConnections();
 
-    virtual void initWidgets();
+    void initWidgets();
 
     QGridLayout *grid;
+
+    QTextEdit *content;
 };
 
 

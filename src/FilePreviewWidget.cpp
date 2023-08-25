@@ -6,7 +6,8 @@
 
 FilePreviewWidget::FilePreviewWidget(QWidget *parent) :
         QWidget(parent),
-        grid(new QGridLayout()) {
+        grid(new QGridLayout()),
+        content(new QTextEdit()) {
     initWidgets();
     initLayout();
     initConnections();
@@ -14,6 +15,7 @@ FilePreviewWidget::FilePreviewWidget(QWidget *parent) :
 
 void FilePreviewWidget::initLayout() {
     setLayout(grid);
+    grid->addWidget(content);
 }
 
 void FilePreviewWidget::initConnections() {
@@ -21,5 +23,9 @@ void FilePreviewWidget::initConnections() {
 }
 
 void FilePreviewWidget::initWidgets() {
+    content->setReadOnly(true);
+}
 
+void FilePreviewWidget::setTextContent(const QString &text) {
+    content->setText(text);
 }

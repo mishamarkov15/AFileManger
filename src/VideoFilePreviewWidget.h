@@ -9,20 +9,19 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QGridLayout>
+#include <QSlider>
 #include <QtMultimedia/QMediaPlayer>
 #include <QtMultimediaWidgets/QVideoWidget>
-
-//const QIcon PLAY_ICON(QPixmap("../assets/play.png"));
-//const QIcon PAUSE_ICON(QPixmap("../assets/pause.png"));
+#include <QtMultimedia/QAudioOutput>
 
 class VideoFilePreviewWidget : public QWidget {
 Q_OBJECT;
 public:
     explicit VideoFilePreviewWidget(QWidget *parent = nullptr);
 
-    void setCurrentVideo(const QString& filePath);
+    void setCurrentVideo(const QString &filePath);
 
-    void setFilenameTitle(const QString& title);
+    void setFilenameTitle(const QString &title);
 
 protected:
     void initLayout();
@@ -32,16 +31,29 @@ protected:
     void initWidgets();
 
 private:
-    QGridLayout* grid;
+    QGridLayout *grid;
 
     QLabel *filenameTitle;
 
     QMediaPlayer *player;
     QVideoWidget *videoWidget;
+    QAudioOutput *audioOutput;
+    QSlider *videoSlider;
+    QSlider *volumeSlider;
 
-    QPushButton* play_pause;
+    QPushButton *play_pause;
+
+    const QIcon PLAY_ICON;
+    const QIcon PAUSE_ICON;
 private slots:
+
     void playPauseManage();
+
+    void updateSlider();
+
+    void setVideoPosition();
+
+    void setVolume();
 };
 
 

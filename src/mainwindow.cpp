@@ -14,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent)
     initWidgets();
     initConnections();
     initLayout();
+    initActions();
+    initMenus();
 }
 
 void MainWindow::initLayout() {
@@ -25,9 +27,6 @@ void MainWindow::initLayout() {
 
 void MainWindow::initConnections() {
     connect(left->treeView, &MyTree::selectionChanged, this, &MainWindow::changeRightWidget);
-//    connect(left->btn1, &QPushButton::clicked, right, &PreviewWidget::displayText);
-//    connect(left->btn2, &QPushButton::clicked, right, &PreviewWidget::displayText);
-//    connect(left->btn3, &QPushButton::clicked, right, &PreviewWidget::displayText);
 }
 
 void MainWindow::initWidgets() {
@@ -42,13 +41,13 @@ void MainWindow::changeRightWidget() {
         d << "File is not Dir\n";
         auto fileName = left->model->fileName(index);
         d << fileName;
-        auto fileExtension =  fileName.right(fileName.length() - fileName.lastIndexOf(".") - 1);
+        auto fileExtension = fileName.right(fileName.length() - fileName.lastIndexOf(".") - 1);
         d << fileExtension;
         if (fileExtension == "mp4" || fileExtension == "mov") {
             delete right;
             right = new VideoFilePreviewWidget();
 
-            auto* videoPreview = dynamic_cast<VideoFilePreviewWidget*>(right);
+            auto *videoPreview = dynamic_cast<VideoFilePreviewWidget *>(right);
             videoPreview->setCurrentVideo(left->model->filePath(index));
             videoPreview->setFilenameTitle(fileName);
 
@@ -57,10 +56,32 @@ void MainWindow::changeRightWidget() {
             delete right;
             right = new FilePreviewWidget();
 
-            auto* filePreview = dynamic_cast<FilePreviewWidget*>(right);
+            auto *filePreview = dynamic_cast<FilePreviewWidget *>(right);
             filePreview->setTextContent("Lorem ipsum");
 
             splitter->addWidget(right);
         }
     }
+}
+
+void MainWindow::initMenus() {
+    fileMenu = menuBar()->addMenu(tr("&File"));
+    fileMenu->addAction(createFile);
+    fileMenu->addAction(createFolder);
+}
+
+void MainWindow::initActions() {
+    createFile = new QAction("New file", this);
+    connect(createFile, &QAction::triggered, this, &MainWindow::newFile);
+
+    createFolder = new QAction("New folder", this);
+    connect(createFolder, &QAction::triggered, this, &MainWindow::newFolder);
+}
+
+void MainWindow::newFile() {
+
+}
+
+void MainWindow::newFolder() {
+    auto response = left->model->mkdir(left->treeView->currentIndex(), "New Folder");
 }

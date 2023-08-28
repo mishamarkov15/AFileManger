@@ -8,6 +8,9 @@
 #include <QMainWindow>
 #include <QGridLayout>
 #include <QWidget>
+#include <QMenu>
+#include <QMenuBar>
+#include <QAction>
 #include <QSplitter>
 
 class MainWindow : public QMainWindow {
@@ -22,6 +25,10 @@ private:
 
     void initWidgets();
 
+    void initMenus();
+
+    void initActions();
+
     QGridLayout *layout;
     QWidget *centralWidget;
 
@@ -31,8 +38,17 @@ private:
     QWidget *right;
 
     QSplitter *splitter;
+
+    QMenu *fileMenu;
+    QAction *createFolder;
+    QAction *createFile;
+
 private slots:
     void changeRightWidget();
+
+    void newFile();
+
+    void newFolder();
 };
 
 

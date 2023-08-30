@@ -4,39 +4,39 @@
 
 #include "TextFilePreviewWidget.h"
 
-PreviewWidget::PreviewWidget(QWidget *parent)
-: QWidget(parent),
-grid(new QGridLayout()),
-fileName(new QLabel("Click button to show text content!")),
-contentPreview(new QTextEdit()){
+TextPreviewWidget::TextPreviewWidget(QWidget *parent)
+        : QWidget(parent),
+          grid(new QGridLayout()),
+          filenameLabel(new QLabel()),
+          contentPreview(new QTextEdit()) {
     initWidgets();
     initLayout();
     initConnections();
 }
 
-void PreviewWidget::initLayout() {
+void TextPreviewWidget::initLayout() {
     setLayout(grid);
 
-    grid->addWidget(fileName, 0, 0, 1, 1);
-    grid->addWidget(contentPreview, 1, 0, 4, 1);
+    grid->addWidget(filenameLabel, 0, 0, 1, 1);
+    grid->addWidget(contentPreview, 1, 0, 5, 1);
 }
 
-void PreviewWidget::initConnections() {
+void TextPreviewWidget::initConnections() {
 
 }
 
-void PreviewWidget::initWidgets() {
-    fileName->setAlignment(Qt::AlignCenter);
+void TextPreviewWidget::initWidgets() {
+    filenameLabel->setAlignment(Qt::AlignCenter);
     contentPreview->setReadOnly(true);
 }
 
-void PreviewWidget::displayText() {
-    contentPreview->clear();
-    auto* btnSender = dynamic_cast<QPushButton*>(sender());
+void TextPreviewWidget::displayText(const QString& filePath, const QString& fileName) {
+    filenameLabel->setText(fileName);
 
-    const QString filePath = "/Users/mikhaiil/CLionProjects/FileManger/assets/" + btnSender->text();
+    contentPreview->clear();
+
     QFile file(filePath);
-    if(!file.open(QIODevice::ReadOnly)) {
+    if (!file.open(QIODevice::ReadOnly)) {
         QMessageBox::information(0, "error", file.errorString());
     }
 

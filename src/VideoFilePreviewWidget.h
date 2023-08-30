@@ -19,9 +19,8 @@ Q_OBJECT;
 public:
     explicit VideoFilePreviewWidget(QWidget *parent = nullptr);
 
-    void setCurrentVideo(const QString &filePath);
+    void setCurrentVideo(const QString &filePath, const QString &fileName);
 
-    void setFilenameTitle(const QString &title);
 
 protected:
     void initLayout();

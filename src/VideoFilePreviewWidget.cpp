@@ -66,15 +66,14 @@ void VideoFilePreviewWidget::playPauseManage() {
     }
 }
 
-void VideoFilePreviewWidget::setCurrentVideo(const QString& filePath) {
+void VideoFilePreviewWidget::setCurrentVideo(const QString& filePath, const QString& fileName) {
+    filenameTitle->setText(fileName);
+
     player->setSource(QUrl::fromLocalFile(filePath));
     audioOutput->setMuted(true);
     audioOutput->setVolume(0.2);
 }
 
-void VideoFilePreviewWidget::setFilenameTitle(const QString &title) {
-    filenameTitle->setText(title);
-}
 
 void VideoFilePreviewWidget::updateSlider() {
     videoSlider->blockSignals(true);

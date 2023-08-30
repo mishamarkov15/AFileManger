@@ -13,6 +13,13 @@
 #include <QAction>
 #include <QSplitter>
 
+enum RIGHT_WIDGET_TYPE {
+    TEXT = 1,
+    IMAGE = 2,
+    VIDEO = 3,
+    AUDIO = 4,
+};
+
 class MainWindow : public QMainWindow {
 Q_OBJECT;
 public:
@@ -29,11 +36,13 @@ private:
 
     void initActions();
 
+    void setRightWidget(QWidget* new_right_widget, RIGHT_WIDGET_TYPE type, const QString& file_path, const QString& file_name);
+
     QGridLayout *layout;
     QWidget *centralWidget;
 
     FileTreeWidget *left;
-//    PreviewWidget* right;
+//    TextPreviewWidget* right;
 //    VideoFilePreviewWidget *right;
     QWidget *right;
 

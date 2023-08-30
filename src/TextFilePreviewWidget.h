@@ -14,10 +14,10 @@
 #include <QFile>
 #include <QMessageBox>
 
-class PreviewWidget : public QWidget {
+class TextPreviewWidget : public QWidget {
 Q_OBJECT;
 public:
-    explicit PreviewWidget(QWidget* parent = nullptr);
+    explicit TextPreviewWidget(QWidget* parent = nullptr);
 
 private:
     void initLayout();
@@ -26,10 +26,10 @@ private:
 
     QGridLayout *grid;
 
-    QLabel* fileName;
+    QLabel* filenameLabel;
     QTextEdit* contentPreview;
-public slots:
-    void displayText();
+public:
+    void displayText(const QString& filePath, const QString& fileName);
 };
 
 

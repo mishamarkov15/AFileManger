@@ -41,32 +41,15 @@ void MainWindow::changeRightWidget() {
         auto filePath = left->model->filePath(index);
         auto fileName = left->model->fileName(index);
         auto fileExtension = fileName.right(fileName.length() - fileName.lastIndexOf(".") - 1);
+
         if (extension::isVideoFile(fileExtension)) {
-            delete right;
-            right = new VideoFilePreviewWidget();
-
-            auto *videoPreview = dynamic_cast<VideoFilePreviewWidget *>(right);
-            videoPreview->setCurrentVideo(left->model->filePath(index));
-            videoPreview->setFilenameTitle(fileName);
-
-            splitter->addWidget(right);
+            setRightWidget(new VideoFilePreviewWidget(), VIDEO, filePath, fileName);
         } else if (extension::isTextFile(fileExtension)) {
-            delete right;
-            right = new FilePreviewWidget();
-
-            auto *filePreview = dynamic_cast<FilePreviewWidget *>(right);
-            filePreview->setTextContent("Lorem ipsum");
-
-            splitter->addWidget(right);
+            setRightWidget(new TextPreviewWidget(), TEXT, filePath, fileName);
         } else if (extension::isAudioFile(fileExtension)) {
             // TODO: open audio preview
         }  else if (extension::isImageFile(fileExtension)) {
-            delete right;
-            right = new ImageFilePreviewWidget();
-
-            auto* image_preview = dynamic_cast<ImageFilePreviewWidget*>(right);
-            image_preview->setImage(filePath, fileName);
-            splitter->addWidget(right);
+            setRightWidget(new ImageFilePreviewWidget(), IMAGE, filePath, fileName);
         }
     }
 }
@@ -91,6 +74,35 @@ void MainWindow::newFile() {
 
 void MainWindow::newFolder() {
     auto response = left->model->mkdir(left->treeView->currentIndex(), "New Folder");
+}
+
+void MainWindow::setRightWidget(QWidget *new_right_widget, RIGHT_WIDGET_TYPE type, const QString &file_path, const QString &file_name) {
+    delete right;
+    right = new_right_widget;
+
+    switch (type) {
+        case TEXT: {
+            auto *filePreview = dynamic_cast<TextPreviewWidget *>(right);
+            filePreview->displayText(file_path, file_name);
+            break;
+        }
+        case IMAGE: {
+            auto* image_preview = dynamic_cast<ImageFilePreviewWidget*>(right);
+            image_preview->setImage(file_path, file_name);
+            break;
+        }
+        case VIDEO: {
+            auto *videoPreview = dynamic_cast<VideoFilePreviewWidget *>(right);
+            videoPreview->setCurrentVideo(file_path, file_name);
+            break;
+        }
+        case AUDIO: {
+            // TODO: implenet audio display
+            break;
+        }
+    }
+
+    splitter->addWidget(right);
 }
 
 inline bool extension::isTextFile(const QString &file_extension) {

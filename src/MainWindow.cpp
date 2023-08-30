@@ -69,7 +69,10 @@ void MainWindow::initActions() {
 }
 
 void MainWindow::newFile() {
-
+    QDebug d(QtMsgType::QtInfoMsg);
+    d << "I'm here!";
+    auto* w = new NewFileDialog(this, left->model->filePath(left->treeView->currentIndex()));
+    w->show();
 }
 
 void MainWindow::newFolder() {

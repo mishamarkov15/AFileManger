@@ -5,6 +5,7 @@
 #include "TextFilePreviewWidget.h"
 #include "ImageFilePreviewWidget.h"
 #include "VideoFilePreviewWidget.h"
+#include "dialogs/NewFileDialog.h"
 #include <QMainWindow>
 #include <QGridLayout>
 #include <QWidget>

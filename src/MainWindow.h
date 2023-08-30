@@ -44,6 +44,7 @@ private:
     QAction *createFile;
 
 private slots:
+
     void changeRightWidget();
 
     void newFile();
@@ -51,5 +52,20 @@ private slots:
     void newFolder();
 };
 
+
+namespace extension {
+    const QVector<QString> TEXT_EXTENSIONS = {"txt", "py", "cpp", "c", "ini", "md"};
+    const QVector<QString> AUDIO_EXTENSIONS = {"mp3", "wma", "wav"};
+    const QVector<QString> VIDEO_EXTENSIONS = {"mp4", "mov"};
+    const QVector<QString> IMAGE_EXTENSIONS = {"png", "jpg", "jpeg", "bmp", "svg", "webp"};
+
+    inline bool isTextFile(const QString &file_extension);
+
+    inline bool isAudioFile(const QString &file_extension);
+
+    inline bool isVideoFile(const QString &file_extension);
+
+    inline bool isImageFile(const QString &file_extension);
+};
 
 #endif //FILEMANGER_MAINWINDOW_H

@@ -7,8 +7,9 @@
 
 #include "FilePreviewWidget.h"
 #include <QLabel>
+#include <QGridLayout>
 
-class ImageFilePreviewWidget : public FilePreviewWidget {
+class ImageFilePreviewWidget : public QWidget {
 Q_OBJECT;
 public:
     explicit ImageFilePreviewWidget(QWidget *parent = nullptr);
@@ -20,8 +21,11 @@ protected:
 
     void initWidgets();
 
-private:
+public:
+    void setImage(const QString& filePath, const QString& fileName);
 
+private:
+    QGridLayout *grid;
 
     QLabel *filenameTitle;
     QLabel *image;

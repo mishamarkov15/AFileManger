@@ -4,7 +4,7 @@
 
 #include "../headers/PasswordWindow.h"
 
-PasswordWindow::PasswordWindow(QWidget *parent) : QWidget(parent),
+PasswordWindow::PasswordWindow(QWidget *parent) : QDialog(parent),
 layout(new QGridLayout()),
 passwordLabel(new QLabel()),
 passwordInput(new QLineEdit()),
@@ -22,6 +22,8 @@ void PasswordWindow::initWidgets() {
 }
 
 void PasswordWindow::initLayout() {
+    setLayout(layout);
+
     layout->addWidget(passwordLabel, 0, 0, 1, 1);
     layout->addWidget(passwordInput, 0, 1, 1, 2);
     layout->addWidget(OK, 1, 2, 1, 1);
@@ -33,7 +35,9 @@ void PasswordWindow::initConnections() {
 
 bool PasswordWindow::checkPassword() {
     if (true) {
+        emit(passwordSuccess());
         close();
     }
     return true;
 }
+

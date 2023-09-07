@@ -5,13 +5,15 @@
 #ifndef FILEMANGER_PASSWORDWINDOW_H
 #define FILEMANGER_PASSWORDWINDOW_H
 
+
 #include <QWidget>
+#include <QDialog>
 #include <QGridLayout>
 #include <QLabel>
 #include <QPushButton>
 #include <QLineEdit>
 
-class PasswordWindow : public QWidget {
+class PasswordWindow : public QDialog {
 Q_OBJECT;
 public:
     explicit PasswordWindow(QWidget* parent = nullptr);
@@ -24,7 +26,10 @@ private:
     QLabel* passwordLabel;
     QLineEdit* passwordInput;
     QPushButton* OK;
-private slots:
+signals:
+    void passwordSuccess();
+
+public slots:
     bool checkPassword();
 };
 

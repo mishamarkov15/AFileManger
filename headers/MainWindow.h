@@ -1,6 +1,7 @@
 #ifndef FILEMANGER_MAINWINDOW_H
 #define FILEMANGER_MAINWINDOW_H
 
+#include "PasswordWindow.h"
 #include "FileTreeWidget.h"
 #include "TextFilePreviewWidget.h"
 #include "ImageFilePreviewWidget.h"
@@ -40,6 +41,8 @@ private:
 
     void setRightWidget(QWidget* new_right_widget, RIGHT_WIDGET_TYPE type, const QString& file_path, const QString& file_name);
 
+    PasswordWindow* pw;
+
     QGridLayout *layout;
     QWidget *centralWidget;
 
@@ -53,6 +56,9 @@ private:
     QMenu *fileMenu;
     QAction *createFolder;
     QAction *createFile;
+
+public slots:
+    void initAll();
 
 private slots:
 

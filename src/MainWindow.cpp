@@ -11,11 +11,9 @@ MainWindow::MainWindow(QWidget *parent)
           right(new QWidget()),
           layout(new QGridLayout()),
           splitter(new QSplitter()) {
-    initWidgets();
-    initConnections();
-    initLayout();
-    initActions();
-    initMenus();
+    pw = new PasswordWindow(this);
+    connect(pw, &PasswordWindow::passwordSuccess, this, &MainWindow::initAll);
+    pw->show();
 }
 
 void MainWindow::initLayout() {
@@ -114,6 +112,15 @@ void MainWindow::setRightWidget(QWidget *new_right_widget, RIGHT_WIDGET_TYPE typ
     }
 
     splitter->addWidget(right);
+}
+
+void MainWindow::initAll() {
+    initWidgets();
+    initConnections();
+    initLayout();
+    initActions();
+    initMenus();
+    show();
 }
 
 inline bool extension::isTextFile(const QString &file_extension) {

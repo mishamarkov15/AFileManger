@@ -2,15 +2,17 @@
 // Created by Михаил Марков on 30/08/2023.
 //
 
+#include <utility>
+
 #include "../../headers/dialogs/NewFileDialog.h"
 
-NewFileDialog::NewFileDialog(QWidget *parent, const QString &filePath) : QDialog(parent),
+NewFileDialog::NewFileDialog(QWidget *parent, QString filePath) : QDialog(parent),
                                                                          grid(new QGridLayout()),
                                                                          fileInputLabel(new QLabel()),
                                                                          input(new QLineEdit()),
                                                                          okBtn(new QPushButton()),
                                                                          cancelBtn(new QPushButton()),
-                                                                         filePath(filePath) {
+                                                                         filePath(std::move(filePath)) {
     initWidgets();
     initLayout();
     initConnections();
@@ -38,14 +40,16 @@ void NewFileDialog::initConnections() {
 }
 
 void NewFileDialog::createNewFile() {
-    filePath += input->text();
+    QDebug d(QtMsgType::QtInfoMsg);
+    d << "Before appending: " << filePath << '\n';
+    filePath += "/" + input->text();
+    d << "After appending: " << filePath << '\n';
 
     QString path(filePath);
-    QDir dir;
+    QFile file(path);
+    file.open(QIODevice::WriteOnly);
+    file.close();
 
-    if (!dir.exists(path)) {
-        dir.mkpath(path);
-    }
     close();
 }
 

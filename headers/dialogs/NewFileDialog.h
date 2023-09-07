@@ -15,7 +15,7 @@
 class NewFileDialog : public QDialog {
 Q_OBJECT;
 public:
-    explicit NewFileDialog(QWidget* parent, const QString& filePath);
+    explicit NewFileDialog(QWidget* parent, QString  filePath);
 
 public slots:
     void createNewFile();

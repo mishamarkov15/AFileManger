@@ -27,7 +27,7 @@ void AudioFilePreviewWidget::initLayout() {
     grid->addWidget(play_next, 1, 2, 1, 1);
     grid->addWidget(play_prev, 1, 0, 1, 1);
     grid->addWidget(audioSlider, 1, 3, 1, 2);
-    grid->addWidget(volumeSlider, 1, 4, 1, 1);
+    grid->addWidget(volumeSlider, 1, 5, 1, 1);
 }
 
 void AudioFilePreviewWidget::initConnections() {

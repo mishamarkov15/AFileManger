@@ -68,8 +68,18 @@ void MainWindow::initActions() {
 }
 
 void MainWindow::newFile() {
-    auto* w = new NewFileDialog(this, left->model->filePath(left->treeView->currentIndex()));
-    w->show();
+    auto filepath = left->model->filePath(left->treeView->currentIndex());
+    QFileInfo fileInfo(filepath);
+
+    QDebug d(QtMsgType::QtInfoMsg);
+
+    NewFileDialog* w = nullptr;
+    if (fileInfo.isDir()) {
+        w = new NewFileDialog(this, filepath);
+    } else {
+        w = new NewFileDialog(this, fileInfo.dir().path());
+    }
+        w->show();
 }
 
 void MainWindow::newFolder() {

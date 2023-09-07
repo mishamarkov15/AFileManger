@@ -35,7 +35,6 @@ void MainWindow::initWidgets() {
 }
 
 void MainWindow::changeRightWidget() {
-    QDebug d(QtMsgType::QtInfoMsg);
     auto index = left->treeView->currentIndex();
     if (!left->model->isDir(index)) {
         auto filePath = left->model->filePath(index);
@@ -47,7 +46,7 @@ void MainWindow::changeRightWidget() {
         } else if (extension::isTextFile(fileExtension)) {
             setRightWidget(new TextPreviewWidget(), TEXT, filePath, fileName);
         } else if (extension::isAudioFile(fileExtension)) {
-            // TODO: open audio preview
+            setRightWidget(new AudioFilePreviewWidget(), AUDIO, filePath, fileName);
         }  else if (extension::isImageFile(fileExtension)) {
             setRightWidget(new ImageFilePreviewWidget(), IMAGE, filePath, fileName);
         }
@@ -69,8 +68,6 @@ void MainWindow::initActions() {
 }
 
 void MainWindow::newFile() {
-    QDebug d(QtMsgType::QtInfoMsg);
-    d << "I'm here!";
     auto* w = new NewFileDialog(this, left->model->filePath(left->treeView->currentIndex()));
     w->show();
 }
@@ -100,7 +97,8 @@ void MainWindow::setRightWidget(QWidget *new_right_widget, RIGHT_WIDGET_TYPE typ
             break;
         }
         case AUDIO: {
-            // TODO: implenet audio display
+            auto *audioPreview = dynamic_cast<AudioFilePreviewWidget *>(right);
+            audioPreview->setCurrentAudio(file_path, file_name);
             break;
         }
     }

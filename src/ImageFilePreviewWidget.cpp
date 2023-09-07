@@ -2,7 +2,7 @@
 // Created by Михаил Марков on 18/08/2023.
 //
 
-#include "ImageFilePreviewWidget.h"
+#include "../headers/ImageFilePreviewWidget.h"
 
 ImageFilePreviewWidget::ImageFilePreviewWidget(QWidget *parent) :
         QWidget(parent),

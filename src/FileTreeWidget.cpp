@@ -2,8 +2,8 @@
 // Created by Михаил Марков on 15/08/2023.
 //
 
-#include "FileTreeWidget.h"
-#include "MainWindow.h"
+#include "../headers/FileTreeWidget.h"
+#include "../headers/MainWindow.h"
 
 FileTreeWidget::FileTreeWidget(QWidget *parent) :
         QWidget(parent),

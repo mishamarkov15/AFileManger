@@ -2,7 +2,7 @@
 // Created by Михаил Марков on 15/08/2023.
 //
 
-#include "TextFilePreviewWidget.h"
+#include "../headers/TextFilePreviewWidget.h"
 
 TextPreviewWidget::TextPreviewWidget(QWidget *parent)
         : QWidget(parent),

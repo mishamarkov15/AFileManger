@@ -1,4 +1,4 @@
-#include "AudioFilePreview.h"
+#include "../headers/AudioFilePreview.h"
 
 AudioFilePreviewWidget::AudioFilePreviewWidget(QWidget *parent)
         : QWidget(parent),

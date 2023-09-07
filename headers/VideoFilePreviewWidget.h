@@ -5,7 +5,6 @@
 #ifndef FILEMANGER_VIDEOFILEPREVIEWWIDGET_H
 #define FILEMANGER_VIDEOFILEPREVIEWWIDGET_H
 
-#include "FilePreviewWidget.h"
 #include <QLabel>
 #include <QPushButton>
 #include <QGridLayout>

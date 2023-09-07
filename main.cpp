@@ -1,6 +1,5 @@
 #include <QApplication>
-#include "src/MainWindow.h"
-#include "src/PasswordWindow.h"
+#include "headers/MainWindow.h"
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);

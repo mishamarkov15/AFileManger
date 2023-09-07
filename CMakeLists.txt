@@ -15,9 +15,9 @@ find_package(Qt6 COMPONENTS
         MultimediaWidgets
         REQUIRED)
 
-add_executable(FileManger main.cpp src/MainWindow.cpp src/MainWindow.h src/TextFilePreviewWidget.cpp src/TextFilePreviewWidget.h src/FileTreeWidget.cpp src/FileTreeWidget.h src/ImageFilePreviewWidget.cpp src/ImageFilePreviewWidget.h src/FilePreviewWidget.cpp src/FilePreviewWidget.h src/PasswordWindow.cpp src/PasswordWindow.h src/VideoFilePreviewWidget.cpp src/dialogs/NewFileDialog.cpp src/dialogs/NewFileDialog.h
+add_executable(FileManger main.cpp src/MainWindow.cpp headers/MainWindow.h src/TextFilePreviewWidget.cpp headers/TextFilePreviewWidget.h src/FileTreeWidget.cpp headers/FileTreeWidget.h src/ImageFilePreviewWidget.cpp headers/ImageFilePreviewWidget.h src/PasswordWindow.cpp headers/PasswordWindow.h src/VideoFilePreviewWidget.cpp headers/VideoFilePreviewWidget.h src/dialogs/NewFileDialog.cpp headers/dialogs/NewFileDialog.h
     src/AudioFilePreview.cpp
-    src/AudioFilePreview.h)
+        headers/AudioFilePreview.h)
 target_link_libraries(FileManger
         Qt::Core
         Qt::Gui

@@ -2,7 +2,7 @@
 // Created by Михаил Марков on 30/08/2023.
 //
 
-#include "NewFileDialog.h"
+#include "../../headers/dialogs/NewFileDialog.h"
 
 NewFileDialog::NewFileDialog(QWidget *parent, const QString &filePath) : QDialog(parent),
                                                                          grid(new QGridLayout()),

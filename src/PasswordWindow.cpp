@@ -2,7 +2,7 @@
 // Created by Михаил Марков on 22/08/2023.
 //
 
-#include "PasswordWindow.h"
+#include "../headers/PasswordWindow.h"
 
 PasswordWindow::PasswordWindow(QWidget *parent) : QWidget(parent),
 layout(new QGridLayout()),
@@ -35,4 +35,5 @@ bool PasswordWindow::checkPassword() {
     if (true) {
         close();
     }
+    return true;
 }

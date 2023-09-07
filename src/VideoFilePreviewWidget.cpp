@@ -2,7 +2,7 @@
 // Created by Михаил Марков on 18/08/2023.
 //
 
-#include "VideoFilePreviewWidget.h"
+#include "../headers/VideoFilePreviewWidget.h"
 
 VideoFilePreviewWidget::VideoFilePreviewWidget(QWidget *parent)
         : QWidget(parent),

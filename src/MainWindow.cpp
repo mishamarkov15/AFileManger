@@ -2,7 +2,7 @@
 // Created by Михаил Марков on 15/08/2023.
 //
 
-#include "MainWindow.h"
+#include "../headers/MainWindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent),

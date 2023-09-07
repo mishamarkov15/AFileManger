@@ -5,7 +5,6 @@
 #ifndef FILEMANGER_IMAGEFILEPREVIEWWIDGET_H
 #define FILEMANGER_IMAGEFILEPREVIEWWIDGET_H
 
-#include "FilePreviewWidget.h"
 #include <QLabel>
 #include <QGridLayout>
 
